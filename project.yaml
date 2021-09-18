@@ -11,7 +11,7 @@ network:
 dataSources:
   - name: runtime
     kind: substrate/Runtime
-    startBlock: 8900000
+    startBlock: 8800000 #8900000
     mapping:
       handlers:
         - handler: handleBlock
