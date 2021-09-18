@@ -1,0 +1,9 @@
+type Staking @entity {
+  id: ID!
+
+  blockNum: Int! @index
+
+  timestamp: Date! @index
+
+  stakingAmount: String!
+}

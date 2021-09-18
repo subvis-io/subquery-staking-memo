@@ -1,0 +1,18 @@
+specVersion: '0.0.1'
+description: 'The project goal is to allow users to query the history of staking amount in Kusama.'
+repository: ''
+
+schema: './schema.graphql'
+
+network:
+  endpoint: wss://kusama.api.onfinality.io/public-ws
+  # dictionary: https://api.subquery.network/sq/subquery/dictionary-kusama
+
+dataSources:
+  - name: runtime
+    kind: substrate/Runtime
+    startBlock: 8900000
+    mapping:
+      handlers:
+        - handler: handleBlock
+          kind: substrate/BlockHandler
