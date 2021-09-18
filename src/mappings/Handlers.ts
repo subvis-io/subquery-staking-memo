@@ -6,11 +6,14 @@ export async function handleBlock(block: SubstrateBlock): Promise<void> {
     const { timestamp, block: rawBlock } = block;
     const curEra = await api.query.staking.currentEra();
     const stakingAmount = await api.query.staking.erasTotalStake(Number.parseInt(curEra.toString()));
+    const totalStaking = BigInt(stakingAmount.toString());
     const blockNum = rawBlock.header.number.toNumber();
 
     const staking = await Staking.get(curEra.toString());
     if (staking) {
-      staking.stakingAmount = stakingAmount.toString();
+      staking.stakingAmount = totalStaking;
+      staking.blockNum = blockNum;
+      staking.timestamp = timestamp;
       logger.info(`BlockNum: ${blockNum} - Era: ${staking.id} - stakingAmount: ${stakingAmount} `);
       await staking.save();
     } else {
@@ -23,7 +26,7 @@ export async function handleBlock(block: SubstrateBlock): Promise<void> {
         id: curEra.toString(),
         timestamp,
         blockNum,
-        stakingAmount: stakingAmount.toString()
+        stakingAmount: totalStaking
       }).save();
     }
   } catch (err) {

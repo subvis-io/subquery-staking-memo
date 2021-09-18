@@ -16,7 +16,7 @@ export class Staking implements Entity {
 
     public timestamp: Date;
 
-    public stakingAmount: string;
+    public stakingAmount: bigint;
 
 
     async save(): Promise<void>{

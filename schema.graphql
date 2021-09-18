@@ -5,5 +5,5 @@ type Staking @entity {
 
   timestamp: Date! @index
 
-  stakingAmount: String!
+  stakingAmount: BigInt!
 }
