@@ -4,7 +4,7 @@
   "description": "The project goal is to allow users to query the history of staking amount per Era in Kusama.",
   "main": "dist/index.js",
   "homepage": "",
-  "repository": "",
+  "repository": "https://github.com/subvis-io/subquery-staking-memo",
   "scripts": {
     "build": "tsc -b",
     "prepack": "rm -rf dist && npm build",
