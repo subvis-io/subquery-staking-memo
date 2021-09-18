@@ -1,5 +1,5 @@
 {
-  "name": "kusama-staking-sum",
+  "name": "kusama-staking-memo",
   "version": "0.1.0",
   "description": "The project goal is to allow users to query the history of staking amount per Era in Kusama.",
   "main": "dist/index.js",
