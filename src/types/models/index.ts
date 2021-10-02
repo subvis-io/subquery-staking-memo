@@ -4,3 +4,5 @@
 
 export {Staking} from "./Staking"
 
+export {Chronicle} from "./Chronicle"
+
