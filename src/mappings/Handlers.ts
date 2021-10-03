@@ -26,8 +26,7 @@ export async function handleBlock(block: SubstrateBlock): Promise<void> {
       await Chronicle.create({ id: ChronicleKey, curEra, curBlockNum: blockNum, curTotalIssuance, curAuctionCounter })
         .save()
         .catch((err) => logger.error(err));
-    } else if (!chronicle.curTotalIssuance || !chronicle.curAuctionCounter) {
-      //TODO: Fix at phrase 2
+    } else {
       await Chronicle.remove(ChronicleKey);
       logger.info('Reset Chronicle');
       await Chronicle.create({
@@ -37,12 +36,11 @@ export async function handleBlock(block: SubstrateBlock): Promise<void> {
         curTotalIssuance,
         curAuctionCounter
       }).save();
-    } else {
-      chronicle.curBlockNum = blockNum;
-      chronicle.curEra = curEra as unknown as number;
-      chronicle.curTotalIssuance = curTotalIssuance as unknown as bigint;
-      chronicle.curAuctionCounter = curAuctionCounter;
-      await chronicle.save();
+      // chronicle.curBlockNum = blockNum;
+      // chronicle.curEra = curEra as unknown as number;
+      // chronicle.curTotalIssuance = curTotalIssuance as unknown as bigint;
+      // chronicle.curAuctionCounter = curAuctionCounter;
+      // await chronicle.save();
     }
 
     const staking = await Staking.get(curEra.toString());
