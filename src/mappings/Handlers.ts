@@ -27,20 +27,11 @@ export async function handleBlock(block: SubstrateBlock): Promise<void> {
         .save()
         .catch((err) => logger.error(err));
     } else {
-      await Chronicle.remove(ChronicleKey);
-      logger.info('Reset Chronicle');
-      await Chronicle.create({
-        id: ChronicleKey,
-        curEra,
-        curBlockNum: blockNum,
-        curTotalIssuance,
-        curAuctionCounter
-      }).save();
-      // chronicle.curBlockNum = blockNum;
-      // chronicle.curEra = curEra as unknown as number;
-      // chronicle.curTotalIssuance = curTotalIssuance as unknown as bigint;
-      // chronicle.curAuctionCounter = curAuctionCounter;
-      // await chronicle.save();
+      chronicle.curBlockNum = blockNum;
+      chronicle.curEra = curEra as unknown as number;
+      chronicle.curTotalIssuance = curTotalIssuance as unknown as bigint;
+      chronicle.curAuctionCounter = curAuctionCounter;
+      await chronicle.save().catch((err) => logger.error(err));
     }
 
     const staking = await Staking.get(curEra.toString());
