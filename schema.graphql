@@ -9,4 +9,6 @@ type Chronicle @entity {
   id: ID! # Static 'ChronicleKey'
   curBlockNum: Int
   curEra: Int
+  curTotalIssuance: BigInt # TODO: confirm whether record all changes
+  curAuctionCounter: Int # TODO: confirm whether record all changes
 }

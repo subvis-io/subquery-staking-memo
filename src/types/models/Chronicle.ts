@@ -16,6 +16,10 @@ export class Chronicle implements Entity {
 
     public curEra?: number;
 
+    public curTotalIssuance?: bigint;
+
+    public curAuctionCounter?: number;
+
 
     async save(): Promise<void>{
         let id = this.id;
