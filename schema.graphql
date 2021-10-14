@@ -3,12 +3,14 @@ type Staking @entity {
   blockNum: Int! @index
   timestamp: Date! @index
   stakingAmount: BigInt!
+  totalIssuance: BigInt
+  auctionCounter: Int
 }
 
 type Chronicle @entity {
   id: ID! # Static 'ChronicleKey'
   curBlockNum: Int
   curEra: Int
-  curTotalIssuance: BigInt # TODO: confirm whether record all changes
-  curAuctionCounter: Int # TODO: confirm whether record all changes
+  curTotalIssuance: BigInt
+  curAuctionCounter: Int
 }
