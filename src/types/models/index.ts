@@ -2,6 +2,8 @@
 
 // Auto-generated , DO NOT EDIT
 
+export {CrowdloanFunds} from "./CrowdloanFunds"
+
 export {Staking} from "./Staking"
 
 export {Chronicle} from "./Chronicle"

@@ -29,6 +29,7 @@
     "@subql/node": "^0.20.3"
   },
   "dependencies": {
-    "@subql/node": "^0.20.3"
+    "@subql/node": "^0.20.3",
+    "lodash": "^4.17.21"
   }
 }
