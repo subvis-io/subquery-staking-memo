@@ -18,9 +18,13 @@ export class Staking implements Entity {
 
     public stakingAmount: bigint;
 
-    public totalIssuance?: bigint;
+    public totalIssuance: bigint;
 
     public auctionCounter?: number;
+
+    public paraThreadFunds?: bigint;
+
+    public paraChainFunds?: bigint;
 
 
     async save(): Promise<void>{

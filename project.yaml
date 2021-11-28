@@ -5,14 +5,25 @@ repository: ''
 schema: './schema.graphql'
 
 network:
-  endpoint: 'wss://polkadot.api.onfinality.io/public-ws'
   # endpoint: 'wss://polkadot.api.onfinality.io/public-ws'
-  # endpoint: wss://kusama.api.onfinality.io/public-ws
+  # endpoint: 'wss://polkadot.api.onfinality.io/public-ws'
+  endpoint: wss://kusama.api.onfinality.io/public-ws
   # dictionary: https://api.subquery.network/sq/subquery/dictionary-kusama
 
 dataSources:
   - name: runtime
     kind: substrate/Runtime
+    filter:
+      specName: kusama
+    startBlock: 8800000 # Kusama 8800000 # Polkadot - 6900000
+    mapping:
+      handlers:
+        - handler: handleBlock
+          kind: substrate/BlockHandler
+  - name: runtime
+    kind: substrate/Runtime
+    filter:
+      specName: polkadot
     startBlock: 6900000 # Kusama 8800000 # Polkadot - 6900000
     mapping:
       handlers:

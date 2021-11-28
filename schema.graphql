@@ -1,10 +1,30 @@
+type CrowdloanFunds @entity {
+  id: ID! # (start)Era-ParaId
+  paraId: Int! @index
+  deposit: BigInt!
+  raised: BigInt!
+  cap: BigInt!
+  firstPeriod: Int!
+  lastPeriod: Int!
+  depositor: String
+  end: Int!
+
+  era: Int! @index # (start)Era
+  blockNum: Int! @index
+  timestamp: Date! @index
+
+  isParachain: Boolean!
+}
+
 type Staking @entity {
-  id: ID!
+  id: ID! # Era
   blockNum: Int! @index
   timestamp: Date! @index
   stakingAmount: BigInt!
-  totalIssuance: BigInt
+  totalIssuance: BigInt!
   auctionCounter: Int
+  paraThreadFunds: BigInt
+  paraChainFunds: BigInt
 }
 
 type Chronicle @entity {
